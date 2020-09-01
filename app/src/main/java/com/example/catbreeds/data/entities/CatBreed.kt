@@ -1,17 +1,15 @@
 package com.example.catbreeds.data.entities
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "breeds")
 data class CatBreed(
-    @PrimaryKey
-    val id: String,
-    val name: String,
-    val description: String,
-    val energyLevel: Int,
-    val dogFriendly: Int,
-    val healthIssues: Int,
-    val wikipediaUrl: String,
-    val countryCode: String
+    @SerializedName("id") val id: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("description") val description: String,
+    @SerializedName("energy_level") val energyLevel: Int,
+    @SerializedName("dog_friendly") val dogFriendly: Int,
+    @SerializedName("health_issues") val healthIssues: Int,
+    @SerializedName("wikipedia_url") val wikipediaUrl: String,
+    @SerializedName("country_code") val countryCode: String,
+    @SerializedName("origin") val origin: String
 )

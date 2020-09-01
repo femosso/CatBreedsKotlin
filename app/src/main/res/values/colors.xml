@@ -3,4 +3,13 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- cat breed card view colors -->
+    <color name="white">#ffffff</color>
+    <color name="transparentBlack">#80000000</color>
+
+    <!-- cat breed details rating bar colors -->
+    <color name="ratingBarColor">#ffca28</color>
+    <color name="ratingBarLightColor">#fffd61</color>
+    <color name="ratingBarDarkColor">#c8a415</color>
 </resources>

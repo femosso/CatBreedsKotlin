@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Cat Breeds</string>
+    <string name="title_item_detail">Item Detail</string>
+
+    <!-- fragment_cat_breeds.xml -->
+    <string name="no_breeds_returned">No breeds returned.</string>
+    <string name="cat_breed_image_desc">Cat Breed Image</string>
+
+    <!-- fragment_cat_breed_details.xml -->
+    <string name="country">Country</string>
+    <string name="energy_level">Energy Level</string>
+    <string name="dog_friendly">Dog Friendly</string>
+    <string name="health_issues">Health Issues</string>
+    <string name="wikipedia_page">More information:</string>
+    <string name="cat_breed_country_desc">Cat Breed Country</string>
 </resources>

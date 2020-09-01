@@ -1,18 +1,16 @@
 package com.example.catbreeds.di
 
-import android.content.Context
-import com.example.catbreeds.data.local.AppDatabase
-import com.example.catbreeds.data.local.CatBreedDao
 import com.example.catbreeds.data.remote.ApiInterface
 import com.example.catbreeds.data.remote.CatBreedRemoteDataSource
-import com.example.catbreeds.data.repository.CharacterRepository
+import com.example.catbreeds.data.repository.Repository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -24,7 +22,16 @@ object AppModule {
     @Singleton
     @Provides
     fun provideRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
-        .baseUrl("https://rickandmortyapi.com/api/")
+        .baseUrl("https://api.thecatapi.com")
+        .client(
+            OkHttpClient().newBuilder()
+                .addNetworkInterceptor { chain: Interceptor.Chain ->
+                    chain.proceed(
+                        chain.request().newBuilder()
+                            .addHeader("x-api-key", "5906c13a-590c-4a4e-adf8-387e369fe4d6").build()
+                    )
+                }.build()
+        )
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()
 
@@ -42,18 +49,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(@ApplicationContext appContext: Context) =
-        AppDatabase.getDatabase(appContext)
-
-    @Singleton
-    @Provides
-    fun provideCharacterDao(db: AppDatabase) = db.characterDao()
-
-    @Singleton
-    @Provides
     fun provideRepository(
-        remoteDataSource: CatBreedRemoteDataSource,
-        localDataSource: CatBreedDao
+        remoteDataSource: CatBreedRemoteDataSource
     ) =
-        CharacterRepository(remoteDataSource, localDataSource)
+        Repository(remoteDataSource)
 }

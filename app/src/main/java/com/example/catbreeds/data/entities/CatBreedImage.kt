@@ -1,10 +1,8 @@
 package com.example.catbreeds.data.entities
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "breeds_image")
 data class CatBreedImage(
-    @PrimaryKey
-    val url: String
+    @SerializedName("breeds") val breeds: List<CatBreed>,
+    @SerializedName("url") val url: String
 )

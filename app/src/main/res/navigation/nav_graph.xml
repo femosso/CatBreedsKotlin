@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/catBreedsFragment">
+
+    <fragment
+        android:id="@+id/catBreedsFragment"
+        android:name="com.example.catbreeds.ui.breeds.CatBreedsFragment"
+        android:label="Breeds List"
+        tools:layout="@layout/fragment_cat_breeds">
+        <action
+            android:id="@+id/action_catBreedsFragment_to_catBreedDetailsFragment"
+            app:destination="@id/catBreedDetailsFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/catBreedDetailsFragment"
+        android:name="com.example.catbreeds.ui.detail.CatBreedDetailsFragment"
+        android:label="Breed Details"
+        tools:layout="@layout/fragment_cat_breed_details" />
+</navigation>
