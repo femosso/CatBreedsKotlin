@@ -1,7 +1,7 @@
 package com.example.catbreeds.data.repository
 
 import androidx.lifecycle.liveData
-import com.example.catbreeds.data.remote.CatBreedRemoteDataSource
+import com.example.catbreeds.data.repository.remote.CatBreedRemoteDataSource
 import com.example.catbreeds.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject

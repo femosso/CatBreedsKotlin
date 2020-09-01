@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.catbreeds.R
-import com.example.catbreeds.data.entities.CatBreedImage
+import com.example.catbreeds.data.model.CatBreedImage
 import com.example.catbreeds.databinding.FragmentCatBreedDetailsBinding
 import com.example.catbreeds.ui.viewmodel.CatBreedsViewModel
 import com.example.catbreeds.utils.Resource

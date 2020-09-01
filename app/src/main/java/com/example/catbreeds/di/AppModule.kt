@@ -1,7 +1,7 @@
 package com.example.catbreeds.di
 
-import com.example.catbreeds.data.remote.ApiInterface
-import com.example.catbreeds.data.remote.CatBreedRemoteDataSource
+import com.example.catbreeds.data.repository.remote.ApiInterface
+import com.example.catbreeds.data.repository.remote.CatBreedRemoteDataSource
 import com.example.catbreeds.data.repository.Repository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

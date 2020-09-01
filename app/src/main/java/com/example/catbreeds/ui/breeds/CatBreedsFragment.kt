@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.catbreeds.R
 import com.example.catbreeds.databinding.FragmentCatBreedsBinding
 import com.example.catbreeds.ui.viewmodel.CatBreedsViewModel
@@ -40,7 +43,7 @@ class CatBreedsFragment : Fragment(), CatBreedsAdapter.CatBreedItemListener {
 
     private fun setupRecyclerView() {
         adapter = CatBreedsAdapter(this)
-        binding.catBreedsRecycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.catBreedsRecycler.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.catBreedsRecycler.adapter = adapter
     }
 
@@ -66,9 +69,29 @@ class CatBreedsFragment : Fragment(), CatBreedsAdapter.CatBreedItemListener {
     }
 
     override fun onClickedCatBreed(breedId: String) {
-        viewModel?.start(breedId)
+        viewModel?.select(breedId)
         findNavController().navigate(
             R.id.action_catBreedsFragment_to_catBreedDetailsFragment
         )
+    }
+
+    override fun onLoadCatBreedImage(breedId: String, imageView: ImageView) {
+        if (imageView.drawable != null) return
+        viewModel?.fetchImage(breedId)?.observe(viewLifecycleOwner, Observer { catBreedImage ->
+            when (catBreedImage.status) {
+                Resource.Status.SUCCESS -> {
+                    if (!catBreedImage.data?.get(0)?.url.isNullOrEmpty()) {
+                        Glide.with(binding.root)
+                            .load(catBreedImage.data?.get(0)?.url)
+                            .apply(RequestOptions().placeholder(R.drawable.placeholder))
+                            .into(imageView)
+                    }
+                }
+                Resource.Status.ERROR -> {
+                }
+                Resource.Status.LOADING -> {
+                }
+            }
+        })
     }
 }

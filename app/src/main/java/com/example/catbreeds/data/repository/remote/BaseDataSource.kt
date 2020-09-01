@@ -1,4 +1,4 @@
-package com.example.catbreeds.data.remote
+package com.example.catbreeds.data.repository.remote
 
 import com.example.catbreeds.utils.Resource
 import retrofit2.Response

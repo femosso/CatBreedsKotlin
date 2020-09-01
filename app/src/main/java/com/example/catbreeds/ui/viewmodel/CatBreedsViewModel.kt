@@ -5,8 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
-import com.example.catbreeds.data.entities.CatBreed
-import com.example.catbreeds.data.entities.CatBreedImage
+import com.example.catbreeds.data.model.CatBreedImage
 import com.example.catbreeds.data.repository.Repository
 import com.example.catbreeds.utils.Resource
 
@@ -16,15 +15,19 @@ class CatBreedsViewModel @ViewModelInject constructor(
 
     val catBreeds = repository.getBreeds()
 
-    private var _id = MutableLiveData<String>()
+    private val _selectedBreed = MutableLiveData<String>()
 
-    private val _catBreedImage = _id.switchMap { id ->
+    private val _selectedBreedImage = _selectedBreed.switchMap { id ->
         repository.getImageByBreed(id)
     }
 
-    var catBreedImage: LiveData<Resource<List<CatBreedImage>>> = _catBreedImage
+    val catBreedImage: LiveData<Resource<List<CatBreedImage>>> = _selectedBreedImage
 
-    fun start(id: String) {
-        _id.value = id
+    fun select(id: String) {
+        _selectedBreed.value = id
+    }
+
+    fun fetchImage(breedId: String): LiveData<Resource<List<CatBreedImage>>> {
+        return repository.getImageByBreed(breedId)
     }
 }

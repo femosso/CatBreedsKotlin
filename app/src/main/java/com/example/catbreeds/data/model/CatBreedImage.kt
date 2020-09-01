@@ -1,4 +1,4 @@
-package com.example.catbreeds.data.entities
+package com.example.catbreeds.data.model
 
 import com.google.gson.annotations.SerializedName
 

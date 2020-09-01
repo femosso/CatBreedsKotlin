@@ -1,7 +1,7 @@
-package com.example.catbreeds.data.remote
+package com.example.catbreeds.data.repository.remote
 
-import com.example.catbreeds.data.entities.CatBreed
-import com.example.catbreeds.data.entities.CatBreedImage
+import com.example.catbreeds.data.model.CatBreed
+import com.example.catbreeds.data.model.CatBreedImage
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
