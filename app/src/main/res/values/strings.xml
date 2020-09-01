@@ -13,4 +13,5 @@
     <string name="health_issues">Health Issues</string>
     <string name="wikipedia_page">More information:</string>
     <string name="cat_breed_country_desc">Cat Breed Country</string>
+    <string name="no_breed_detail_returned">No breed detail returned.</string>
 </resources>
