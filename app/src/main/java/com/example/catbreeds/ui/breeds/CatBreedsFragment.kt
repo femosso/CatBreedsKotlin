@@ -53,16 +53,18 @@ class CatBreedsFragment : Fragment(), CatBreedsAdapter.CatBreedItemListener {
                 Resource.Status.SUCCESS -> {
                     binding.progressBar.visibility = View.GONE
                     if (catBreeds.data == null)
-                        binding.noBreed.visibility = View.VISIBLE
+                        binding.showEmpty.visibility = View.VISIBLE
                     else
                         adapter.setCatBreeds(ArrayList(catBreeds.data))
                 }
-                Resource.Status.ERROR ->
-                    binding.noBreed.visibility = View.VISIBLE
+                Resource.Status.ERROR -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.showEmpty.visibility = View.VISIBLE
+                }
 
                 Resource.Status.LOADING -> {
                     binding.progressBar.visibility = View.VISIBLE
-                    binding.noBreed.visibility = View.GONE
+                    binding.showEmpty.visibility = View.GONE
                 }
             }
         })
