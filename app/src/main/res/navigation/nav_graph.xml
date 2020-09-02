@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/catBreedsFragment"
         android:name="com.example.catbreeds.ui.breeds.CatBreedsFragment"
-        android:label="Breeds List"
+        android:label="@string/frag_breeds_list_label"
         tools:layout="@layout/fragment_cat_breeds">
         <action
             android:id="@+id/action_catBreedsFragment_to_catBreedDetailsFragment"
@@ -18,6 +18,6 @@
     <fragment
         android:id="@+id/catBreedDetailsFragment"
         android:name="com.example.catbreeds.ui.detail.CatBreedDetailsFragment"
-        android:label="Breed Details"
+        android:label="@string/frag_breed_details_label"
         tools:layout="@layout/fragment_cat_breed_details" />
 </navigation>

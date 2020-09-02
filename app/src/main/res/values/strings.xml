@@ -14,4 +14,8 @@
     <string name="wikipedia_page">More information:</string>
     <string name="cat_breed_country_desc">Cat Breed Country</string>
     <string name="no_breed_detail_returned">No breed detail returned.</string>
+
+    <!-- fragment labels -->
+    <string name="frag_breeds_list_label">Breeds List</string>
+    <string name="frag_breed_details_label">Breed Details</string>
 </resources>

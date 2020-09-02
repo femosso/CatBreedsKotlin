@@ -9,7 +9,7 @@ import com.example.catbreeds.data.model.CatBreed
 import com.example.catbreeds.databinding.ViewCatBreedBinding
 
 class CatBreedsAdapter(private val listener: CatBreedItemListener) :
-    RecyclerView.Adapter<CatBreedsAdapter.CatBreedViewHolder>() {
+    RecyclerView.Adapter<CatBreedViewHolder>() {
 
     private val catBreeds = ArrayList<CatBreed>()
 
@@ -34,27 +34,27 @@ class CatBreedsAdapter(private val listener: CatBreedItemListener) :
         fun onClickedCatBreed(breedId: String)
         fun onLoadCatBreedImage(breedId: String, imageView: ImageView)
     }
+}
 
-    class CatBreedViewHolder(
-        private val binding: ViewCatBreedBinding,
-        private val listener: CatBreedItemListener
-    ) : RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener {
+class CatBreedViewHolder(
+    private val binding: ViewCatBreedBinding,
+    private val listener: CatBreedsAdapter.CatBreedItemListener
+) : RecyclerView.ViewHolder(binding.root),
+    View.OnClickListener {
 
-        private lateinit var catBreed: CatBreed
+    private lateinit var catBreed: CatBreed
 
-        init {
-            binding.root.setOnClickListener(this)
-        }
+    init {
+        binding.root.setOnClickListener(this)
+    }
 
-        fun bind(item: CatBreed) {
-            listener.onLoadCatBreedImage(item.id, binding.image)
-            binding.name.text = item.name
-            catBreed = item
-        }
+    fun bind(item: CatBreed) {
+        listener.onLoadCatBreedImage(item.id, binding.image)
+        binding.name.text = item.name
+        catBreed = item
+    }
 
-        override fun onClick(v: View?) {
-            listener.onClickedCatBreed(catBreed.id)
-        }
+    override fun onClick(v: View?) {
+        listener.onClickedCatBreed(catBreed.id)
     }
 }

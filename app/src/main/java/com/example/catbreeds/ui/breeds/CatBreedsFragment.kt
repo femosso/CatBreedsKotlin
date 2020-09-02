@@ -76,22 +76,22 @@ class CatBreedsFragment : Fragment(), CatBreedsAdapter.CatBreedItemListener {
     }
 
     override fun onLoadCatBreedImage(breedId: String, imageView: ImageView) {
-        if (imageView.drawable != null) return
-        viewModel?.fetchImage(breedId)?.observe(viewLifecycleOwner, Observer { catBreedImage ->
-            when (catBreedImage.status) {
-                Resource.Status.SUCCESS -> {
-                    if (!catBreedImage.data?.get(0)?.url.isNullOrEmpty()) {
-                        Glide.with(binding.root)
-                            .load(catBreedImage.data?.get(0)?.url)
-                            .apply(RequestOptions().placeholder(R.drawable.placeholder))
-                            .into(imageView)
+        if (imageView.drawable == null)
+            viewModel?.fetchImage(breedId)?.observe(viewLifecycleOwner, Observer { catBreedImage ->
+                when (catBreedImage.status) {
+                    Resource.Status.SUCCESS -> {
+                        if (!catBreedImage.data?.get(0)?.url.isNullOrEmpty()) {
+                            Glide.with(binding.root)
+                                .load(catBreedImage.data?.get(0)?.url)
+                                .apply(RequestOptions().placeholder(R.drawable.placeholder))
+                                .into(imageView)
+                        }
+                    }
+                    Resource.Status.ERROR -> {
+                    }
+                    Resource.Status.LOADING -> {
                     }
                 }
-                Resource.Status.ERROR -> {
-                }
-                Resource.Status.LOADING -> {
-                }
-            }
-        })
+            })
     }
 }

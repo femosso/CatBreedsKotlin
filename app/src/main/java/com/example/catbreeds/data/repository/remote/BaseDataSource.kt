@@ -2,7 +2,6 @@ package com.example.catbreeds.data.repository.remote
 
 import com.example.catbreeds.utils.Resource
 import retrofit2.Response
-import timber.log.Timber
 
 abstract class BaseDataSource {
 
@@ -20,7 +19,6 @@ abstract class BaseDataSource {
     }
 
     private fun <T> error(message: String): Resource<T> {
-        Timber.d(message)
         return Resource.error("Network call has failed for a following reason: $message")
     }
 }
